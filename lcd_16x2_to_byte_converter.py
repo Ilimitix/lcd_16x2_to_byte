@@ -75,21 +75,21 @@ primary_squares = []
 # Create two rows of eight blocks
 for i in range(2):
     # Create eight blocks in each row
-    for j in range(8):
+    for j in range(16):
         # Create a container for the block and buttons
         container = tk.Frame(grid_frame)
         container.grid(row=i, column=j, padx=5, pady=5)
 
         # Create the "Conv" button above for the first row and below for the second row
         if i == 0:
-            convert_button = tk.Button(container, text="Conv", command=lambda b=i*8+j: convert_and_display_block(b, result_text))
+            convert_button = tk.Button(container, text="Conv", command=lambda b=i*16+j: convert_and_display_block(b, result_text))
             convert_button.pack(side="top", pady=5)
         else:
-            convert_button = tk.Button(container, text="Conv", command=lambda b=i*8+j: convert_and_display_block(b, result_text))
+            convert_button = tk.Button(container, text="Conv", command=lambda b=i*16+j: convert_and_display_block(b, result_text))
             convert_button.pack(side="bottom", pady=5)
 
         # Create the "/" button to clear the block
-        clear_button = tk.Button(container, text="/", command=lambda b=i*8+j: clear_block(b))
+        clear_button = tk.Button(container, text="/", command=lambda b=i*16+j: clear_block(b))
         clear_button.pack(side="top" if i == 0 else "bottom", pady=5)
 
         # Create the primary squares in the block
@@ -100,7 +100,7 @@ for i in range(2):
 
             # Create the primary squares in each row
             for l in range(5):
-                square = tk.Frame(row, width=20, height=20, bg="white", borderwidth=1, relief="solid")
+                square = tk.Frame(row, width=15, height=15, bg="white", borderwidth=1, relief="solid")
                 square.pack(side="left", padx=2, pady=2)
                 square.bind("<Button-1>", primary_square_click)
                 primary_squares_block.append(square)
